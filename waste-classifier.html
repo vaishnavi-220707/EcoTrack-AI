@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Classifier - EcoTrack AI</title>
+    <link rel="stylesheet" href="css/calculator.css">
+    <link rel="stylesheet" href="css/classifier.css">
+</head>
+<body>
+
+    <div class="calc-page">
+        <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+
+        <div class="calc-card">
+            <h1>♻️ AI Waste Classifier</h1>
+            <p class="calc-subtitle">Upload a photo of an item and I'll tell you how to dispose of it properly.</p>
+
+            <div class="upload-box">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <label for="imageInput" class="upload-label">📷 Choose Photo</label>
+                <img id="previewImage" style="display:none;" />
+            </div>
+
+            <button id="classifyBtn" class="btn-calculate" disabled>Classify Waste</button>
+
+            <div id="loadingMsg" style="display:none;">Analyzing image...</div>
+
+            <div class="calc-result" id="resultBox" style="display:none;">
+                <h2 id="itemName"></h2>
+                <p id="categoryTag"></p>
+                <p id="disposalTip"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/waste-classifier.js"></script>
+</body>
+</html>

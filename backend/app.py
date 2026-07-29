@@ -3,16 +3,17 @@ from flask_cors import CORS
 import sqlite3
 import hashlib
 import os
-
-import os
+import base64
 from dotenv import load_dotenv
 from google import genai
+from google.genai import types
 
 load_dotenv()
 
 gemini_client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 app = Flask(__name__)
+
 CORS(app)  # Allows your frontend (running on a different port) to talk to this backend
 
 DB_PATH = os.path.join(os.path.dirname(__file__), 'ecotrack.db')
@@ -184,7 +185,8 @@ def chat():
             contents=user_message,
             config={
                 "system_instruction": system_instruction,
-                "max_output_tokens": 300
+                "max_output_tokens": 300,
+                "thinking_config": {"thinking_budget": 0}
             }
         )
         return jsonify({'reply': response.text})
@@ -192,6 +194,56 @@ def chat():
         print('Chat error:', e)
         return jsonify({'error': 'Could not reach AI assistant. Try again.'}), 500
 
+
+@app.route('/api/classify-waste', methods=['POST'])
+def classify_waste():
+    try:
+        data = request.get_json()
+        image_base64 = data.get('image')
+
+        if not image_base64:
+            return jsonify({"error": "No image provided"}), 400
+
+        mime_type = "image/jpeg"
+        if image_base64.startswith('data:') and ',' in image_base64:
+            header = image_base64.split(',')[0]
+            mime_type = header.split(':')[1].split(';')[0]
+            image_base64 = image_base64.split(',')[1]
+
+        image_bytes = base64.b64decode(image_base64)
+
+        # # DEBUG PRINTS
+        # print("Mime type detected:", mime_type)
+        # print("Image bytes length:", len(image_bytes))
+        # print("First 20 bytes:", image_bytes[:20])
+
+        prompt = """You are a waste sorting assistant. Look at this image and identify the main waste item.
+        Respond ONLY in this exact JSON format, no extra text:
+        {
+          "item": "name of item",
+          "category": "Recyclable" or "Organic" or "Hazardous" or "General Waste",
+          "tip": "one short sentence on how to dispose of it properly"
+        }"""
+
+        response = gemini_client.models.generate_content(
+            model="gemini-flash-latest",
+            contents=[
+                types.Part.from_bytes(data=image_bytes, mime_type=mime_type),
+                prompt
+            ],
+            config={
+                "max_output_tokens": 300
+            }
+        )
+
+        result_text = response.text.strip()
+        result_text = result_text.replace("```json", "").replace("```", "").strip()
+
+        return jsonify({"result": result_text})
+
+    except Exception as e:
+        print('Classify error:', e)
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == '__main__':
