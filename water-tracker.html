@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Tracker - EcoTrack AI</title>
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+    <div class="calc-page">
+        <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+
+        <div class="calc-card">
+            <h1>💧 Water Usage Tracker</h1>
+            <p class="calc-subtitle">Enter your daily water habits to estimate your usage.</p>
+
+            <form id="waterForm">
+                <div class="calc-group">
+                    <label for="shower">🚿 Shower time (minutes/day)</label>
+                    <input type="number" id="shower" min="0" placeholder="e.g. 8" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="laundryLoads">🧺 Laundry loads per week</label>
+                    <input type="number" id="laundryLoads" min="0" placeholder="e.g. 3" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="dishwashing">🍽️ Dishwashing time (minutes/day)</label>
+                    <input type="number" id="dishwashing" min="0" placeholder="e.g. 15" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="drinking">🥤 Drinking + cooking water (liters/day)</label>
+                    <input type="number" id="drinking" min="0" placeholder="e.g. 4" required>
+                </div>
+
+                <button type="submit" class="btn-calculate">Calculate My Usage</button>
+            </form>
+
+            <div class="calc-result" id="calcResult">
+                <!-- Result appears here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/water-tracker.js"></script>
+</body>
+</html>

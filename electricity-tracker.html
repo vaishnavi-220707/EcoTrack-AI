@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Tracker - EcoTrack AI</title>
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+    <div class="calc-page">
+        <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+
+        <div class="calc-card">
+            <h1>⚡ Electricity Usage Tracker</h1>
+            <p class="calc-subtitle">Enter your daily appliance usage to estimate consumption and cost.</p>
+
+            <form id="electricityForm">
+                <div class="calc-group">
+                    <label for="ac">❄️ AC usage (hours/day)</label>
+                    <input type="number" id="ac" min="0" placeholder="e.g. 4" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="fan">🌀 Fan usage (hours/day)</label>
+                    <input type="number" id="fan" min="0" placeholder="e.g. 8" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="tv">📺 TV usage (hours/day)</label>
+                    <input type="number" id="tv" min="0" placeholder="e.g. 3" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="laptop">💻 Laptop/computer usage (hours/day)</label>
+                    <input type="number" id="laptop" min="0" placeholder="e.g. 6" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="fridge">🧊 Refrigerator (usually always on)</label>
+                    <select id="fridge" required>
+                        <option value="1">Yes, I have one running</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="calc-group">
+                    <label for="rate">💰 Electricity rate (₹ per kWh)</label>
+                    <input type="number" id="rate" min="0" step="0.1" placeholder="e.g. 7" required>
+                </div>
+
+                <button type="submit" class="btn-calculate">Calculate Usage & Bill</button>
+            </form>
+
+            <div class="calc-result" id="calcResult">
+                <!-- Result appears here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/electricity-tracker.js"></script>
+</body>
+</html>

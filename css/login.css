@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2ecc71;
+    --primary-dark: #27ae60;
+    --dark: #1a1a2e;
+    --gray: #6b7280;
+    --light-bg: #f4faf6;
+    --white: #ffffff;
+    --error: #e74c3c;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--light-bg), var(--white));
+    min-height: 100vh;
+}
+
+.auth-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-card {
+    background: var(--white);
+    padding: 45px 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 420px;
+}
+
+.auth-logo {
+    display: block;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--dark);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.input-group input:focus {
+    outline: 2px solid var(--primary);
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.85rem;
+    min-height: 18px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    width: 100%;
+    background: var(--primary);
+    color: var(--white);
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.auth-switch a {
+    color: var(--primary-dark);
+    font-weight: 600;
+    text-decoration: none;
+}

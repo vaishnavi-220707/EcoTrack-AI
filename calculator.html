@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Calculator - EcoTrack AI</title>
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+    <div class="calc-page">
+        <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+
+        <div class="calc-card">
+            <h1>🌱 Carbon Footprint Calculator</h1>
+            <p class="calc-subtitle">Fill in your monthly habits to estimate your carbon footprint.</p>
+
+            <form id="calcForm">
+                <div class="calc-group">
+                    <label for="carKm">🚗 Car travel per month (km)</label>
+                    <input type="number" id="carKm" min="0" placeholder="e.g. 300" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="flightHours">✈️ Flight hours per year</label>
+                    <input type="number" id="flightHours" min="0" placeholder="e.g. 5" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="electricity">⚡ Electricity used per month (kWh)</label>
+                    <input type="number" id="electricity" min="0" placeholder="e.g. 150" required>
+                </div>
+
+                <div class="calc-group">
+                    <label for="dietType">🍽️ Diet type</label>
+                    <select id="dietType" required>
+                        <option value="">Select one</option>
+                        <option value="meat">Meat-heavy</option>
+                        <option value="mixed">Mixed (meat + veg)</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-calculate">Calculate My Footprint</button>
+            </form>
+
+            <div class="calc-result" id="calcResult">
+                <!-- Result appears here after calculation -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/calculator.js"></script>
+</body>
+</html>
