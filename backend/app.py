@@ -1,9 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
-import sqlite3
-import hashlib
-import os
-import base64
+from flask_cors 
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
